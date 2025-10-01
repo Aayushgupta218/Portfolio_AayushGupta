@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
 const PORTFOLIO_DATA = {
     name: "Aayush Gupta",
-    tagline: "Data Scientist | Full Stack Developer | Final year CSE student",
+    tagline: "Full Stack Developer | Data Science | CSE @ Panjab University",
     bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering student with a passion for Data Science and Machine Learning.",
 
 
@@ -268,7 +268,7 @@ function useCustomCursor() {
             const dx = mousePos.current.x - cursorPos.current.x;
             const dy = mousePos.current.y - cursorPos.current.y;
             
-            const easing = 0.25;
+            const easing = 0.40;
             cursorPos.current.x += dx * easing;
             cursorPos.current.y += dy * easing;
 
