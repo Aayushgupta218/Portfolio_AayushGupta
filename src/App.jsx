@@ -5,7 +5,6 @@ const PORTFOLIO_DATA = {
     tagline: "Full Stack Developer | Data Science | CSE @ Panjab University",
     bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering student with a passion for Data Science and Machine Learning.",
 
-
     skills: [
         "React", "Next.js", "Node.js", "Express.js", "Tailwind CSS",
         "C++", "Python", "Javascript", "SQL", "AWS/GCP", "Machine Learning", 
@@ -81,7 +80,7 @@ const PORTFOLIO_DATA = {
             patentNumber: "Indian Patent #569335",
             status: "Granted",
             date: "16 September 2025",
-            description: "Machine learning system for predicting employee turnover with 98% accuracy using behavioral and performance metrics.",
+            description: "Developed and optimized 5+ deep learning models (GANs, U-Nets, Autoencoders) for Skull Image Reconstruction, achieving nearly 50% faster processing compared to traditional methods through fine-tuned architectures for accuracy and efficiency.",
             inventors: ["Aayush Gupta"],
             category: "Deep Learning"
         }
