@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 const PORTFOLIO_DATA = {
     name: "Aayush Gupta",
     tagline: "Full Stack Developer | AI-Engineering | CSE @ Panjab University",
-    bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering student and full-stack developer who builds scalable systems — from REST APIs to real-time platforms — and leverages AI/ML to make them smarter.",
+    bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering graduate and full-stack developer who builds scalable systems — from REST APIs to real-time platforms — and leverages AI/ML to make them smarter.",
 
     skills: [
         "React.js", "Next.js", "Node.js", "Express.js", "Spring Boot",
