@@ -63,7 +63,7 @@ const PORTFOLIO_DATA = {
                 "Developed an employee attrition prediction model using Python (Pandas, NumPy, scikit-learn, Seaborn) with focused data preprocessing and model training.",
                 "Tuned hyperparameters using Grid Search and Cross-Validation, achieving 98% accuracy on test datasets.",
             ],
-            technologies: ["Python", "Power BI", "Pandas", "scikit-learn", "NumPy", "Seaborn"]
+            technologies: ["Python", "Power BI", "Azure", "Pandas", "scikit-learn", "NumPy", "Seaborn"]
         },
         {
             id: 2,
@@ -146,7 +146,7 @@ const PORTFOLIO_DATA = {
         },
     ],
 
-    resumeURL: "https://drive.google.com/file/d/1VHG_0UCtFu8iYqVlfol3296pzrFSdZcs/view?usp=sharing"
+    resumeURL: "https://tinyurl.com/mpa2utus"
 };
 
 // === Icon Components ===
