@@ -2,77 +2,107 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
 const PORTFOLIO_DATA = {
     name: "Aayush Gupta",
-    tagline: "Full Stack Developer | Data Science | CSE @ Panjab University",
-    bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering student with a passion for Data Science and Machine Learning.",
+    tagline: "Full Stack Developer | AI-Engineering | CSE @ Panjab University",
+    bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering student and full-stack developer who builds scalable systems — from REST APIs to real-time platforms — and leverages AI/ML to make them smarter.",
 
     skills: [
-        "React", "Next.js", "Node.js", "Express.js", "Tailwind CSS",
-        "C++", "Python", "Javascript", "SQL", "AWS/GCP", "Machine Learning", 
-        "Deep Learning", "Generative AI", "Data Structures and Algorithm", 
-        "System Design", "OOPs", "Django", "Tensorflow", "Docker", "Linux", 
-        "Git", "MySQL", "MongoDB" 
+        "React.js", "Next.js", "Node.js", "Express.js", "Spring Boot",
+        "Java", "C/C++", "Python", "JavaScript", "SQL",
+        "MongoDB", "MySQL", "AWS", "Vercel", "Docker",
+        "Tailwind CSS", "Django", "REST APIs", "System Design",
+        "Machine Learning", "Deep Learning", "Generative AI", "TensorFlow",
+        "Data Structures & Algorithms", "OOP", "Git", "Linux", "Power BI"
     ],
+
     projects: [
-        { id: 1, title: "LET'S CONNECT - Video Meeting Platform", description: "Engineered a real-time video meeting platform capable of supporting 150+ simultaneous participants, maintaining a consistent 99.9% service availability, and providing high-quality communication across varying network conditions. Enhanced secure authentication using Clerk API and responsive design for optimal user experience. ", tags: ["Next.js", "TypeScript", "Tailwind CSS","Clerk Authentication","Stream.io","Shadcn UI","Socket.io"], link: "https://let-s-connect-ten.vercel.app/" },
-        { id: 2, title: "Trash Tracker - Citizen Garbage Reporting", description: "Deployed a citizen-driven, 24/7 cleanliness reporting system that enabled immediate identification of sanitation issues, resulting in elimination of previous municipal response delays through the integration of automated, real-time dashboard alerts.  • Integrated GPS tracking, Google authentication, JWT tokens, automated mailing and Choropleth Map. ", tags: ["React.js", "Node.js","Express.js", "MongoDB","GPS Tracking","Json Web Token(JWT)","Database Design","Rest APIs"], link: "https://trashtrackerfrontend.onrender.com/" },
-        { id: 3, title: "Gen-AI Content Summarizer", description: "Implemented PDF parsing, vector embedding, and semantic search for document Q&A;  integrated YouTube transcript extraction and summarization; ensured secure API key management and robust error handling. • Engineered a natural language to SQL translation feature, accelerating data querying speed by 20% .", tags: ["Python", "Langchain", "Gemini API","Llama 3.1","ChromaDB","sqlite3","Prompt Engineering"], link: "https://ai-contentsummarizer.streamlit.app/" },
-        { id: 4, title: "WhatsApp Chat Analyzer", description: "Developed Python-based tool to analyze 50,000+ messages of a WhatsApp chat, extracting meaningful insights. • Executed analysis of message frequency, user activity patterns, word usage and emoji trends on file size limit of 200 MB. ", tags: ["Python", "Pandas", "Matplotlib","WordCloud","Seaborn","Streamlit","NLTK"], link: "https://whatsappchatanalysis-vfcmmjbrpccg9xrujbcu2w.streamlit.app/" },
+        {
+            id: 1,
+            title: "Smart Email Assistant",
+            description: "AI-powered email reply generator with a Gmail-integrated Chrome extension toolbar. Processes 50+ emails/min achieving 92% contextual relevance using Gemini 2.5 Flash. Eliminated 15+ minutes of daily manual AI copy-paste workflow with one-click replies in under 2 seconds.",
+            tags: ["Spring Boot", "Spring AI", "Google Gemini API", "Java", "WebFlux", "Chrome Extension", "Prompt Engineering"],
+            link: "https://github.com/Aayushgupta218"
+        },
+        {
+            id: 2,
+            title: "LET'S CONNECT - Video Meeting Platform",
+            description: "Engineered a real-time video meeting platform supporting 150+ simultaneous participants with 99.9% service availability and high-quality communication across varying network conditions. Enhanced secure authentication using Clerk API with a fully responsive design.",
+            tags: ["Next.js", "TypeScript", "Tailwind CSS", "Clerk Authentication", "Stream.io", "Shadcn UI", "Socket.io"],
+            link: "https://let-s-connect-ten.vercel.app/"
+        },
+        {
+            id: 3,
+            title: "Trash Tracker - Citizen Garbage Reporting",
+            description: "Deployed a citizen-driven 24/7 cleanliness reporting system enabling immediate identification of sanitation issues, eliminating municipal response delays via automated real-time dashboard alerts. Integrated GPS tracking, Google auth, JWT tokens, automated mailing, and choropleth maps.",
+            tags: ["React.js", "Node.js", "Express.js", "MongoDB", "GPS Tracking", "JWT", "Database Design", "REST APIs"],
+            link: "https://trashtrackerfrontend.onrender.com/"
+        },
+        {
+            id: 4,
+            title: "Gen-AI Content Summarizer",
+            description: "Implemented PDF parsing, vector embedding, and semantic search for document Q&A. Integrated YouTube transcript extraction and summarization. Engineered a natural language to SQL translation feature, accelerating data querying speed by 20%.",
+            tags: ["Python", "Langchain", "Gemini API", "Llama 3.1", "ChromaDB", "sqlite3", "Prompt Engineering"],
+            link: "https://ai-contentsummarizer.streamlit.app/"
+        },
+        {
+            id: 5,
+            title: "WhatsApp Chat Analyzer",
+            description: "Python-based tool to analyze 50,000+ messages from WhatsApp chats, extracting meaningful insights. Supports analysis of message frequency, user activity patterns, word usage, and emoji trends on file sizes up to 200 MB.",
+            tags: ["Python", "Pandas", "Matplotlib", "WordCloud", "Seaborn", "Streamlit", "NLTK"],
+            link: "https://whatsappchatanalysis-vfcmmjbrpccg9xrujbcu2w.streamlit.app/"
+        },
     ],
+
     experience: [
-        { 
-            id: 1, 
-            title: "Data Science Intern", 
-            company: "Unified Mentor", 
-            duration: "07/2024 - 08/2024", 
+        {
+            id: 1,
+            title: "Data Science Intern",
+            company: "NeenOpal Inc.",
+            duration: "01/2026 – Present",
             bullets: [
-                "Built predictive models for Employee Attrition and Bird Strike Incident forecasting using Python (Pandas, scikit-learn, NumPy, Seaborn) for feature engineering and data preprocessing.",
-                "Applied Grid Search and Cross-Validation to tune model parameters, reaching 98% accuracy on test datasets.",
-                "Created SQL data pipelines connecting preprocessing, training, and result processing for automated model deployment.",
-                "Developed machine learning models across HR Analytics and Aviation Safety domains, processing datasets with multiple prediction targets."
-            ], 
-            technologies: ["Python", "scikit-learn", "Pandas", "SQL"] 
-        },
-        { 
-            id: 2, 
-            title: "Machine Learning Intern", 
-            company: "MDART DIC, Panjab University", 
-            duration: "10/2023 - 06/2024", 
-            bullets: [
-                "Built 5 deep learning models (GANs, U-Nets, Autoencoders) for skull image reconstruction from CT scans, reducing processing time by 50% compared to traditional filtered backprojection methods.",
-                "Trained models on large-scale CT and fundus image datasets, applying data preprocessing techniques including normalization, augmentation, and noise reduction for model accuracy.",
-                "Selected the best-performing model based on reconstruction quality metrics and integrated it into a FastAPI web service for real-time medical image processing",
-                "Deployed the system for radiology workflows, enabling clinicians to process skull reconstruction tasks with faster turnaround times in clinical environments."
+                "Built a Python-based feature to export wireframes into Power BI dashboards, enabling teams to move designs into interactive reports — attracting ~25,000 new users and 7 clients.",
+                "Developed an employee attrition prediction model using Python (Pandas, NumPy, scikit-learn, Seaborn) with focused data preprocessing and model training.",
+                "Tuned hyperparameters using Grid Search and Cross-Validation, achieving 98% accuracy on test datasets.",
             ],
-            technologies: ["React", "Redux", "Sass", "Jest"] 
-        }
-    ],
-    education: [
-        { 
-            id: 1, 
-            degree: "B.E. in Computer Science and Engineering", 
-            institution: "University Institute of Engineering and Technology, Panjab University, Chandigarh", 
-            duration: "2022 - 2026", 
-            bullets: [
-                "CGPA : 8.56",
-            ]
+            technologies: ["Python", "Power BI", "Pandas", "scikit-learn", "NumPy", "Seaborn"]
         },
-        { 
-            id: 2, 
-            degree: "Class 12 (CBSE)", 
-            institution: "Arya Senior Secondary School, Karnal", 
-            duration: "2021 - 2022", 
+        {
+            id: 2,
+            title: "Project Intern",
+            company: "MDART DIC, Panjab University",
+            duration: "10/2023 – 06/2024",
             bullets: [
-                "Percentage : 94.6%",
-            ]
+                "Developed and optimized 5+ deep learning models (GANs, U-Nets, Autoencoders) for Skull Image Reconstruction, achieving ~50% faster processing vs. traditional filtered backprojection methods.",
+                "Preprocessed large-scale CT and fundus image datasets (normalization, augmentation, noise reduction) to maximize model accuracy.",
+                "Integrated the best-performing model into an end-to-end FastAPI web service, enabling real-time deployment in radiology workflows.",
+            ],
+            technologies: ["Python", "TensorFlow", "FastAPI", "GANs", "U-Net", "OpenCV"]
         }
     ],
+
+    education: [
+        {
+            id: 1,
+            degree: "B.E. in Computer Science and Engineering",
+            institution: "University Institute of Engineering and Technology, Panjab University, Chandigarh",
+            duration: "10/2022 – 05/2026",
+            bullets: ["CGPA: 8.56"]
+        },
+        {
+            id: 2,
+            degree: "Class 12 (CBSE)",
+            institution: "Arya Senior Secondary School, Karnal",
+            duration: "03/2021 – 05/2022",
+            bullets: ["Percentage: 94.6%"]
+        }
+    ],
+
     socialLinks: [
         { name: "LinkedIn", url: "https://www.linkedin.com/in/aayush-gupta-294354248/", icon: "Linkedin" },
         { name: "GitHub", url: "https://github.com/Aayushgupta218", icon: "Github" },
         { name: "LeetCode", url: "https://leetcode.com/u/Aayushgupta_218/", icon: "LeetCode" },
-        { name: "Email", url: "mailto:aggarwalaayush220@gmail.com", icon: "Mail" },
-        
+        { name: "Email", url: "mailto:aayushgupta1359@gmail.com", icon: "Mail" },
     ],
+
     patents: [
         {
             id: 1,
@@ -85,27 +115,38 @@ const PORTFOLIO_DATA = {
             category: "Deep Learning"
         }
     ],
-     achievements: [
+
+    achievements: [
         {
             id: 1,
-            title: "Research Work Presentor",
-            organization: "CHASCON 2024 - National Level Conference on Viksit Bharat",
-            date: "November 2024",
-            description: "Presented my work in the conference aimed at emerging technologies in the Engineering Section",
-            category: "Conference",
+            title: "Naukri Campus Young Turks",
+            organization: "Naukri Campus – National Level Competition",
+            date: "2024",
+            description: "Achieved 97th percentile in national-level Aptitude & Logical Reasoning assessment, competing against thousands of engineering students across India.",
+            category: "Competition",
             icon: "Trophy"
         },
-        // {
-        //     id: 2,
-        //     title: "",
-        //     organization: "State Institute of Technology",
-        //     date: "2022-2024",
-        //     description: "Consistently maintained GPA above 3.8 for 6 consecutive semesters",
-        //     category: "Academic",
-        //     icon: "Star"
-        // },
-      ],
-    resumeURL: "#"
+        {
+            id: 2,
+            title: "Research Work Presenter",
+            organization: "CHASCON 2024 – National Level Conference on Viksit Bharat",
+            date: "November 2024",
+            description: "Presented research on deep learning-based medical image reconstruction at a national conference focused on emerging engineering technologies.",
+            category: "Conference",
+            icon: "Star"
+        },
+        {
+            id: 3,
+            title: "700+ Problems Solved",
+            organization: "LeetCode, GeeksForGeeks & Coding Platforms",
+            date: "Ongoing",
+            description: "Solved 700+ algorithmic problems across top competitive programming platforms, demonstrating strong problem-solving, DSA, and system-thinking skills.",
+            category: "Competitive Coding",
+            icon: "Certificate"
+        },
+    ],
+
+    resumeURL: "https://drive.google.com/file/d/1VHG_0UCtFu8iYqVlfol3296pzrFSdZcs/view?usp=sharing"
 };
 
 // === Icon Components ===
@@ -196,7 +237,6 @@ const LeetCodeIcon = (props) => (
     </svg>
 );
 
-
 const DownloadIcon = (props) => (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -204,7 +244,6 @@ const DownloadIcon = (props) => (
         <line x1="12" y1="15" x2="12" y2="3"></line>
     </svg>
 );
-
 
 const TrophyIcon = (props) => (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -266,11 +305,9 @@ function useCustomCursor() {
         const updateCursor = () => {
             const dx = mousePos.current.x - cursorPos.current.x;
             const dy = mousePos.current.y - cursorPos.current.y;
-            
             const easing = 0.40;
             cursorPos.current.x += dx * easing;
             cursorPos.current.y += dy * easing;
-
             cursor.style.transform = `translate3d(${cursorPos.current.x}px, ${cursorPos.current.y}px, 0)`;
             rafRef.current = requestAnimationFrame(updateCursor);
         };
@@ -278,7 +315,6 @@ function useCustomCursor() {
         const handleMouseMove = (e) => {
             mousePos.current.x = e.clientX - (isHovering ? 20 : 8);
             mousePos.current.y = e.clientY - (isHovering ? 20 : 8);
-            
             const interactive = e.target.closest('[data-interactive="true"]');
             setIsHovering(!!interactive);
         };
@@ -325,9 +361,9 @@ function AnimatedSection({ id, children, title, icon: Icon }) {
     const [sectionRef, isVisible] = useIntersectionObserver();
 
     return (
-        <section 
-            id={id} 
-            ref={sectionRef} 
+        <section
+            id={id}
+            ref={sectionRef}
             className={`
                 transition-all duration-500 ease-out p-6 md:p-12 lg:p-20 min-h-[60vh]
                 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
@@ -374,14 +410,12 @@ function AchievementCard({ achievement }) {
                 </div>
                 <span className="text-sm text-gray-400 font-mono">{achievement.date}</span>
             </div>
-            
             <h3 className="text-xl font-bold text-white mb-2">{achievement.title}</h3>
             <p className="text-md font-semibold text-indigo-300 mb-3">{achievement.organization}</p>
             <p className="text-gray-400 text-base">{achievement.description}</p>
         </div>
     );
 }
-
 
 function PatentCard({ patent }) {
     const getStatusColor = (status) => {
@@ -406,11 +440,9 @@ function PatentCard({ patent }) {
                 </div>
                 <span className="text-sm text-gray-400 font-mono">{patent.date}</span>
             </div>
-            
             <h3 className="text-xl font-bold text-white mb-2">{patent.title}</h3>
             <p className="text-md font-semibold text-indigo-300 mb-2">{patent.patentNumber}</p>
             <p className="text-gray-400 text-base mb-3">{patent.description}</p>
-            
             <div className="border-t border-gray-700/50 pt-3">
                 <p className="text-sm text-gray-400">
                     <span className="font-medium">Inventors:</span> {patent.inventors.join(', ')}
@@ -424,7 +456,6 @@ function PatentsAchievements() {
     return (
         <AnimatedSection id="patents-achievements" title="Patents & Achievements" icon={TrophyIcon}>
             <div className="max-w-6xl mx-auto space-y-12">
-                {/* Patents Section */}
                 <div>
                     <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                         <PatentIcon className="w-6 h-6 mr-3 text-indigo-400" />
@@ -436,8 +467,6 @@ function PatentsAchievements() {
                         ))}
                     </div>
                 </div>
-
-                {/* Achievements Section */}
                 <div>
                     <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                         <StarIcon className="w-6 h-6 mr-3 text-indigo-400" />
@@ -453,7 +482,6 @@ function PatentsAchievements() {
         </AnimatedSection>
     );
 }
-
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -471,9 +499,7 @@ function Header() {
         e.preventDefault();
         setIsOpen(false);
         const target = document.querySelector(targetId);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
     }, []);
 
     const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
@@ -481,10 +507,10 @@ function Header() {
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900 via-gray-900/95 to-gray-900/90 backdrop-blur-sm shadow-2xl border-b border-indigo-800/50">
             <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-                <a 
-                    href="#hero" 
-                    onClick={(e) => smoothScroll(e, '#hero')} 
-                    data-interactive="true" 
+                <a
+                    href="#hero"
+                    onClick={(e) => smoothScroll(e, '#hero')}
+                    data-interactive="true"
                     className="text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition-colors duration-200 rounded-lg p-2"
                 >
                     <CodeIcon className="inline w-6 h-6 mr-1" />
@@ -555,10 +581,9 @@ function Hero() {
                             View Projects
                         </a>
                         <a
-                            href={"https://drive.google.com/file/d/1VHG_0UCtFu8iYqVlfol3296pzrFSdZcs/view?usp=sharing"}
+                            href={PORTFOLIO_DATA.resumeURL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            download
                             data-interactive="true"
                             className="inline-flex items-center justify-center px-6 py-3 border border-indigo-400 text-base font-medium rounded-full text-indigo-400 bg-gray-900 hover:bg-indigo-900/50 transition-all duration-200 transform hover:scale-105"
                         >
@@ -585,33 +610,43 @@ function About() {
             <div className="lg:grid lg:grid-cols-3 lg:gap-12">
                 <div className="lg:col-span-2 text-gray-300 text-lg space-y-6">
                     <p>{PORTFOLIO_DATA.bio}</p>
-                    <p> I'm currently in my final year at University Institute of Engineering and Technology, Panjab University, where I've maintained an impressive<span className='text-amber-300'> 8.56 CGPA</span>  while building expertise in cutting-edge technologies.</p>
-                    <p>I have hands-on professional experience through impactful internships  - working as a <span className="text-amber-300">Data Science Intern at Unified Mentor </span>
-                      where I built predictive analytics models achieving 98% accuracy, 
-                      and as a <span className='text-amber-300'>Machine Learning Intern at MDART DIC, Panjab University</span>, where I developed <span className='text-amber-300'>5+ deep learning models</span> for medical 
-                      image reconstruction that achieved 50% faster processing than traditional methods.
-                      </p>
-                      <p>
-                      I've successfully delivered <span className='text-amber-300'>4+ major projects</span> spanning from real-time video conferencing platforms supporting 150+ participants to AI-powered content summarization tools, 
-                      and full-stack web applications using the MERN stack. My expertise in <span className='text-amber-300'>full-stack development</span> combined with modern frameworks like <span className='text-amber-300'>React.js, Next.js, Node.js, and Express.js</span> allows me to build end-to-end solutions from database design to responsive user interfaces
-                      I'm constantly exploring emerging technologies in <span className='text-amber-300'>Deep Learning, Computer Vision, and System Design</span> while building scalable 
-                      applications that make a meaningful impact.
-                      </p>
-                      <p>
-                      Beyond technical skills, I bring strong problem-solving abilities - having solved <span className='text-amber-300'>500+ coding problems</span> across platforms and achieved recognition at 
-                      national-level competitions including CHASCON 2024 and <span className='text-amber-300'>Naukri Campus Young Turks (93.9 percentile)</span>.
-                      I excel in collaborative environments with proven adaptive learning skills and change agility, making me ready to contribute effectively to dynamic tech teams 
-                      while continuing to <span className='text-amber-300'>grow as a software engineer specializing in AI/ML solutions</span>.
-                      </p>
-
-
-        
+                    <p>
+                        I'm in my final year at University Institute of Engineering and Technology, Panjab University,
+                        where I've maintained a <span className="text-amber-300">8.56 CGPA</span> while shipping real products
+                        and contributing to research that earned a <span className="text-amber-300">granted Indian patent</span>.
+                    </p>
+                    <p>
+                        Professionally, I'm currently a <span className="text-amber-300">Data Science Intern at NeenOpal Inc.</span>, where I
+                        built a Python-based wireframe-to-Power BI export feature that onboarded <span className="text-amber-300">~25,000 new users</span> and
+                        7 clients. Previously, as a <span className="text-amber-300">Project Intern at MDART DIC, Panjab University</span>, I
+                        developed <span className="text-amber-300">5+ deep learning models</span> (GANs, U-Nets, Autoencoders) for medical
+                        image reconstruction, cutting processing time by <span className="text-amber-300">~50%</span> and deploying the system
+                        via FastAPI into live radiology workflows.
+                    </p>
+                    <p>
+                        On the engineering side, I build full-stack applications with <span className="text-amber-300">React.js, Next.js,
+                        Node.js, Express.js, Spring Boot,</span> and the <span className="text-amber-300">MERN stack</span> — from database
+                        design to responsive UIs. My recent projects range from a real-time video platform
+                        supporting <span className="text-amber-300">150+ concurrent users</span> to an AI email assistant
+                        processing <span className="text-amber-300">50+ emails per minute</span> with 92% contextual relevance.
+                    </p>
+                    <p>
+                        I approach AI and ML not as a separate discipline but as a toolset that makes software
+                        more powerful — whether that's integrating <span className="text-amber-300">Generative AI APIs</span> into production
+                        backends, building <span className="text-amber-300">predictive models</span> that achieve 98% accuracy, or prompting
+                        LLMs to generate context-aware outputs efficiently. I've also solved
+                        <span className="text-amber-300"> 700+ coding problems</span> and ranked in the
+                        <span className="text-amber-300"> 97th percentile</span> in Naukri Campus Young Turks.
+                    </p>
                 </div>
                 <div className="lg:col-span-1 mt-10 lg:mt-0">
                     <h3 className="text-2xl font-semibold text-white mb-6 border-b border-indigo-700 pb-2">Core Competencies</h3>
                     <div className="flex flex-wrap gap-3">
                         {PORTFOLIO_DATA.skills.map((skill, index) => (
-                            <span key={`${skill}-${index}`} className="px-4 py-2 bg-indigo-800/50 text-indigo-200 text-sm font-medium rounded-full transition-all duration-200 hover:bg-indigo-700/70 hover:scale-105">
+                            <span
+                                key={`${skill}-${index}`}
+                                className="px-4 py-2 bg-indigo-800/50 text-indigo-200 text-sm font-medium rounded-full transition-all duration-200 hover:bg-indigo-700/70 hover:scale-105"
+                            >
                                 {skill}
                             </span>
                         ))}
@@ -622,23 +657,18 @@ function About() {
     );
 }
 
-// Fixed TimelineItem to handle both bullets and description
 function TimelineItem({ title, secondary, duration, bullets, description, tags, isLast }) {
     return (
         <div className="flex relative pb-12">
             <div className={`h-full w-0.5 absolute inset-0 left-2 bg-indigo-700/50 ${isLast ? 'hidden' : ''}`}></div>
-            
             <div className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-600 inline-flex items-center justify-center text-white relative z-10 -ml-1.5 shadow-md">
                 <div className="w-2.5 h-2.5 rounded-full bg-indigo-300 animate-ping absolute opacity-75"></div>
             </div>
-
             <div className="flex-grow pl-6 transition-transform duration-200 hover:scale-[1.01] rounded-lg">
                 <div className="bg-gray-800 p-5 rounded-lg border border-gray-700/50">
                     <p className="font-mono text-sm text-indigo-400 mb-1">{duration}</p>
                     <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
                     <p className="text-md font-semibold text-gray-300 mb-4">{secondary}</p>
-                    
-                    {/* Handle both bullets array and single description */}
                     {bullets ? (
                         <ul className="space-y-2 mb-4">
                             {bullets.map((bullet, index) => (
@@ -651,7 +681,6 @@ function TimelineItem({ title, secondary, duration, bullets, description, tags, 
                     ) : (
                         <p className="text-gray-400 text-base mb-4">{description}</p>
                     )}
-                    
                     {tags && tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mt-4">
                             {tags.map(tag => (
@@ -700,8 +729,8 @@ function Education() {
                             title={edu.degree}
                             secondary={edu.institution}
                             duration={edu.duration}
-                            bullets={edu.bullets} // Now using bullets instead of description
-                            tags={[]} 
+                            bullets={edu.bullets}
+                            tags={[]}
                             isLast={index === PORTFOLIO_DATA.education.length - 1}
                         />
                     ))}
@@ -713,11 +742,11 @@ function Education() {
 
 function ProjectCard({ project }) {
     return (
-        <a 
-            href={project.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            data-interactive="true" 
+        <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-interactive="true"
             className="block group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl rounded-xl overflow-hidden"
         >
             <div className="bg-gray-800 border border-gray-700/50 rounded-xl p-6 h-full flex flex-col justify-between transition-colors duration-200 group-hover:bg-gray-700/80">
@@ -750,9 +779,11 @@ function Projects() {
                 ))}
             </div>
             <div className="text-center mt-16">
-                <a 
-                    href="https://github.com/Aayushgupta218" 
-                    data-interactive="true" 
+                <a
+                    href="https://github.com/Aayushgupta218"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-interactive="true"
                     className="inline-flex items-center justify-center px-8 py-3 border border-indigo-500 text-lg font-medium rounded-full text-indigo-400 bg-gray-900 hover:bg-indigo-900/50 transition-all duration-200 transform hover:scale-105"
                 >
                     View All on GitHub
@@ -770,7 +801,6 @@ function Contact() {
                     The best way to reach me is through one of my professional profiles below.
                     I look forward to connecting!
                 </p>
-
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {PORTFOLIO_DATA.socialLinks.map((link) => {
                         const IconComponent = IconMap[link.icon];
@@ -799,9 +829,8 @@ function Footer() {
         <footer className="bg-gray-900 border-t border-indigo-900/20 py-8 text-center">
             <div className="max-w-6xl mx-auto px-4">
                 <p className="text-gray-500 text-sm">
-                  &copy;  Developed and Code by Aayush Gupta |  {new Date().getFullYear()}.
+                    &copy; Developed and Coded by Aayush Gupta | {new Date().getFullYear()}.
                 </p>
-                
             </div>
         </footer>
     );
@@ -813,14 +842,10 @@ function App() {
 
     return (
         <div className="bg-gray-900 min-h-screen font-inter">
-            {/* Fixed the style element - removed jsx and global attributes */}
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-                * {
-                    cursor: none !important;
-                }
-                
-                /* Faster, GPU-accelerated animations */
+                * { cursor: none !important; }
+
                 @keyframes fadeIn {
                     0% { opacity: 0; transform: translate3d(0, 10px, 0); }
                     100% { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -829,24 +854,16 @@ function App() {
                     0% { opacity: 0; transform: translate3d(0, 15px, 0); }
                     100% { opacity: 1; transform: translate3d(0, 0, 0); }
                 }
-                
                 .animate-fade-in {
                     animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
                 }
                 .animate-fade-in-delayed {
                     animation: fadeInDelayed 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
                 }
-                
-                /* Performance optimizations */
-                .will-change-transform {
-                    will-change: transform;
-                }
-                .backface-visibility-hidden {
-                    backface-visibility: hidden;
-                }
+                .will-change-transform { will-change: transform; }
+                .backface-visibility-hidden { backface-visibility: hidden; }
             `}</style>
-            
-            {/* Optimized Custom Cursor */}
+
             <div
                 ref={cursorRef}
                 className={`fixed top-0 left-0 rounded-full pointer-events-none z-[1000] mix-blend-difference bg-indigo-400/70 will-change-transform backface-visibility-hidden transition-all ${
@@ -864,7 +881,7 @@ function App() {
                 <div className="bg-gray-800/50 border-t border-b border-indigo-900/20">
                     <Education />
                 </div>
-                <PatentsAchievements /> {/* Add this new section */}
+                <PatentsAchievements />
                 <div className="bg-gray-800/50 border-t border-b border-indigo-900/20"></div>
                 <Projects />
                 <div className="bg-gray-800/50 border-t border-b border-indigo-900/20">
