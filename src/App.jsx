@@ -3,15 +3,15 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 const PORTFOLIO_DATA = {
     name: "Aayush Gupta",
     tagline: "Full Stack Developer | AI-Engineering | CSE @ Panjab University",
-    bio: "Hey there! 👋 I'm Aayush Gupta, a Computer Science Engineering graduate and full-stack developer who builds scalable systems — from REST APIs to real-time platforms — and leverages AI/ML to make them smarter.",
+    bio: "Hey there! 👋 I'm Aayush Gupta, a Full-stack AI developer who builds scalable systems — from REST APIs to real-time platforms — and leverages AI/ML to make them smarter.",
 
     skills: [
         "React.js", "Next.js", "Node.js", "Express.js", "Spring Boot",
-        "Java", "C/C++", "Python", "JavaScript", "SQL",
-        "MongoDB", "MySQL", "AWS", "Vercel", "Docker",
+        "Java", "C/C++", "C#", "Python", "JavaScript", "SQL",
+        "MongoDB", "MySQL", "AWS", "Azure", "Docker",
         "Tailwind CSS", "Django", "REST APIs", "System Design",
         "Machine Learning", "Deep Learning", "Generative AI", "TensorFlow",
-        "Data Structures & Algorithms", "OOP", "Git", "Linux", "Power BI"
+        "Data Structures & Algorithms", "OOP", "Git", "Linux"
     ],
 
     projects: [
@@ -55,15 +55,15 @@ const PORTFOLIO_DATA = {
     experience: [
         {
             id: 1,
-            title: "Data Science Intern",
+            title: "Data Scientist",
             company: "NeenOpal Inc.",
             duration: "01/2026 – Present",
             bullets: [
                 "Built a Python-based feature to export wireframes into Power BI dashboards, enabling teams to move designs into interactive reports — attracting ~25,000 new users and 7 clients.",
                 "Developed an employee attrition prediction model using Python (Pandas, NumPy, scikit-learn, Seaborn) with focused data preprocessing and model training.",
-                "Tuned hyperparameters using Grid Search and Cross-Validation, achieving 98% accuracy on test datasets.",
+                "Architecting an agentic AI solution using Amazon Q with AWS Bedrock AgentCore, enabling multi-step reasoning and dynamic tool invocation across client data pipelines; reduced manual query resolution time by ~40%.",
             ],
-            technologies: ["Python", "Power BI", "Azure", "Pandas", "scikit-learn", "NumPy", "Seaborn"]
+            technologies: ["Python", "Power BI", "AWS", "Azure", "Pandas", "scikit-learn", "NumPy"]
         },
         {
             id: 2,
@@ -146,7 +146,7 @@ const PORTFOLIO_DATA = {
         },
     ],
 
-    resumeURL: "https://tinyurl.com/mpa2utus"
+    resumeURL: "https://drive.google.com/file/d/1kiShQmCWevG2tmwO8l7NlcaPAD0c4pMC/view"
 };
 
 // === Icon Components ===
@@ -610,13 +610,9 @@ function About() {
             <div className="lg:grid lg:grid-cols-3 lg:gap-12">
                 <div className="lg:col-span-2 text-gray-300 text-lg space-y-6">
                     <p>{PORTFOLIO_DATA.bio}</p>
+                    
                     <p>
-                        I'm in my final year at University Institute of Engineering and Technology, Panjab University,
-                        where I've maintained a <span className="text-amber-300">8.56 CGPA</span> while shipping real products
-                        and contributing to research that earned a <span className="text-amber-300">granted Indian patent</span>.
-                    </p>
-                    <p>
-                        Professionally, I'm currently a <span className="text-amber-300">Data Science Intern at NeenOpal Inc.</span>, where I
+                        Professionally, I'm currently a <span className="text-amber-300">Data Scientist at NeenOpal Inc.</span>, where I
                         built a Python-based wireframe-to-Power BI export feature that onboarded <span className="text-amber-300">~25,000 new users</span> and
                         7 clients. Previously, as a <span className="text-amber-300">Project Intern at MDART DIC, Panjab University</span>, I
                         developed <span className="text-amber-300">5+ deep learning models</span> (GANs, U-Nets, Autoencoders) for medical
